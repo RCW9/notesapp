@@ -30,6 +30,7 @@ describe('testing view', () => {
         notesView.buttonEl.click();
         expect(document.querySelectorAll('div.note').length).toBe(2);
         expect(document.querySelectorAll('div.note')[0].textContent).toBe("adding a note");
-        expect(document.querySelectorAll('div.note')[1].textContent).toBe("adding second note")   
+        expect(document.querySelectorAll('div.note')[1].textContent).toBe("adding second note")
+        expect(inputEl.value).toBe("");  
     });
     });
