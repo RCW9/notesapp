@@ -5,6 +5,7 @@ class NotesView{
         this.model = model;
         this.buttonEl = document.querySelector('#add-note-button');
         this.mainContainerEl = document.querySelector('#main-container');
+        console.log(this.mainContainerEl)
         this.buttonEl.addEventListener('click', () => {
             const inputEl = document.querySelector('#message-input');
             this.addNewNote(inputEl);
@@ -22,9 +23,21 @@ class NotesView{
         })};
     
     addNewNote(inputEl){
-        this.model.addNote(inputEl.value)
-        this.displayNotes()
-    }
+        this.model.addNote(inputEl.value);
+        this.clearNotes();
+        this.displayNotes();
+    };
+
+    clearNotes(){
+        const allNotes = document.querySelectorAll('div.note')
+        console.log(allNotes)
+        allNotes.forEach((element )=> {
+            element.remove()
+
+        })
+
+    };
+
 };
 
 module.exports = NotesView
