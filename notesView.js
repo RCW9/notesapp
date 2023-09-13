@@ -1,8 +1,9 @@
 
 
 class NotesView{
-    constructor(model){
+    constructor(model, client){
         this.model = model;
+        this.client = client
         this.buttonEl = document.querySelector('#add-note-button');
         this.mainContainerEl = document.querySelector('#main-container');
         console.log(this.mainContainerEl)
@@ -31,13 +32,17 @@ class NotesView{
 
     clearDisplayedNotes(){
         const allNotes = document.querySelectorAll('div.note')
-        console.log(allNotes)
         allNotes.forEach((element )=> {
             element.remove()
 
         })
-
     };
+
+    displayNotesFromApi(){
+        this.client.loadNotes(apiNotes => 
+            this.model.setNotes(apiNotes))
+            .then(() => this.displayNotes())      
+    }
 
 };
 
