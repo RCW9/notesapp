@@ -1,4 +1,6 @@
 const NotesClient = require('./notesClient');
+const NotesModel = require('./notesModel');
+const NotesView = require('./notesView');
 
     // This makes `fetch` available to our test
     // (it is not by default, as normally `fetch` is only
@@ -6,7 +8,7 @@ const NotesClient = require('./notesClient');
     require('jest-fetch-mock').enableMocks()
 
     describe('notesClient Class', () => {
-    it('calls fetch and loads data', (done) => {
+    it('calls fetch and returns data', (done) => {
         // 1. Instantiate the class
         const notesClient = new NotesClient();
 
@@ -18,7 +20,6 @@ const NotesClient = require('./notesClient');
         fetch.mockResponseOnce(JSON.stringify(
             ['This note is coming from the server']
         ));
-
         // 3. We call the method, giving a callback function.
         // When the HTTP response is received, the callback will be called.
         // We then use `expect` to assert the data from the server contain

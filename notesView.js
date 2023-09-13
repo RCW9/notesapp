@@ -39,9 +39,9 @@ class NotesView{
     };
 
     displayNotesFromApi(){
-        this.client.loadNotes(apiNotes => 
-            this.model.setNotes(apiNotes))
-            .then(() => this.displayNotes())      
+        return this.client.loadNotes(apiNotes => 
+        this.model.setNotes(apiNotes))
+            .then(() => this.displayNotes())  
     }
 
 };
