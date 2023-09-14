@@ -9,7 +9,8 @@ class NotesView{
         console.log(this.mainContainerEl)
         this.buttonEl.addEventListener('click', () => {
             const inputEl = document.querySelector('#message-input');
-            this.addNewNote(inputEl);
+            this.clearDisplayedNotes()
+            this.postNote(inputEl);
             inputEl.value = ""
         });
     }
@@ -42,8 +43,15 @@ class NotesView{
         return this.client.loadNotes(apiNotes => 
         this.model.setNotes(apiNotes))
             .then(() => this.displayNotes())  
-    }
+    };
 
+    postNote(inputEl){
+        const newNote = {content:inputEl.value}
+        return this.client.createNote(newNote, apiNotes => 
+            this.model.setNotes(apiNotes))
+                .then(() => this.displayNotes()) 
+    
 };
+}
 
 module.exports = NotesView

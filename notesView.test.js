@@ -37,7 +37,6 @@ describe('testing view', () => {
         expect(inputEl.value).toBe("");  
     });
     it('shows notes from api', (done) => {
-        // 1. Instantiate the class
         document.body.innerHTML = fs.readFileSync('./index.html');
         const notesClient = new NotesClient();
         const notesModel = new NotesModel();
